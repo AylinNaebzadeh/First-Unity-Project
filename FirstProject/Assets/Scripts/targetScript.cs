@@ -5,12 +5,10 @@ using UnityEngine;
 public class targetScript : MonoBehaviour
 {
     [SerializeField] float hitPrize = 0;
-    public GameObject go;
-    // Start is called before the first frame update
+    public GameObject GO;
     void Start()
     {
         StartCoroutine(cycleGenerator());
-        // GameObject newCycle = Instantiate(go, new Vector3(Random.Range(-10, 10), Random.Range(-5, 5), 0), Quaternion.identity);
     }
 
     void Update()
@@ -22,16 +20,18 @@ public class targetScript : MonoBehaviour
     {
         while (true)
         {
-            GameObject newCycle = Instantiate(go, new Vector3(Random.Range(-10, 10), Random.Range(-5, 5), 0), Quaternion.identity);
-            Destroy(newCycle.gameObject, 0.5f);
-            yield return new WaitForSeconds(20);
+            GameObject newCycle = Instantiate(GO, new Vector3(Random.Range(-10, 10), Random.Range(-5, 5), 0), Quaternion.identity);
+            Destroy(newCycle, 7);
+            yield return new WaitForSeconds(5);
         }
     }
 
     void OnMouseDown()
     {
-        Destroy(this.gameObject);
+
+        Destroy(gameObject);
         hitPrize += 20;
         Debug.Log("You have earned new score!, your currnet score is equal to = "+ hitPrize);
+
     }
 }
